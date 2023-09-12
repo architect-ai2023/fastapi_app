@@ -41,7 +41,7 @@ def get_person(id):
     person = find_person(id)
     print(person)
     # если не найден, отправляем статусный код и сообщение об ошибке
-    if person == None:
+    if person is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message": "Пользователь не найден"}
@@ -63,7 +63,7 @@ def edit_person(data=Body()):
     # получаем пользователя по id
     person = find_person(data["id"])
     # если не найден, отправляем статусный код и сообщение об ошибке
-    if person == None:
+    if person is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message": "Пользователь не найден"}
@@ -80,7 +80,7 @@ def delete_person(id):
     person = find_person(id)
 
     # если не найден, отправляем статусный код и сообщение об ошибке
-    if person == None:
+    if person is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message": "Пользователь не найден"}
